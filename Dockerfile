@@ -12,6 +12,8 @@ RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/ba
 RUN chmod 775 ./pre-build.sh
 RUN sh pre-build.sh
 
+RUN apt install redis-server
+
 # Install Workspace for Python
 
 RUN if [ $workspace = "theia" ] ; then \
