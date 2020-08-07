@@ -3,6 +3,7 @@ FROM python:3.7-slim
 EXPOSE 8080
 
 ARG workspace="none"
+ARG broker="none"
 
 RUN apt-get update \
     && apt-get install --assume-yes wget
@@ -14,6 +15,9 @@ RUN sh pre-build.sh
 RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/backend-project/database/db-setup.sh
 RUN chmod 775 ./db-setup.sh
 RUN sh db-setup.sh
+
+RUN if [ $broker = "redis" ] ; then \
+    RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/backend-project/database/db-setup.sh ; fi
 
 # Install Workspace for Python
 

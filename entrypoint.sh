@@ -1,0 +1,1 @@
+celery -A cjapp worker -c 4 -l info
