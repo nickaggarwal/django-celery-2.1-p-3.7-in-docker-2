@@ -12,13 +12,6 @@ RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/ba
 RUN chmod 775 ./pre-build.sh
 RUN sh pre-build.sh
 
-RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/backend-project/database/db-setup.sh
-RUN chmod 775 ./db-setup.sh
-RUN sh db-setup.sh
-
-RUN if [ $broker = "redis" ] ; then \
-    RUN wget https://codejudge-starter-repo-artifacts.s3.ap-south-1.amazonaws.com/backend-project/database/db-setup.sh ; fi
-
 # Install Workspace for Python
 
 RUN if [ $workspace = "theia" ] ; then \
